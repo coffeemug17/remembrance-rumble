@@ -1,0 +1,33 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    /*   viewport units: vh (viewport height), vw (viewport width), vmin (smallest between width and height) */
+    /* height: 100vh; */
+    margin: 0;
+    font-family: 'Sofia Sans Condensed', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#board {
+    display: grid;
+    grid-template-rows: repeat(3, 20vmin);
+    grid-template-columns: repeat(4, 15vmin);
+    gap: 8vmin;
+}
+
+#board > div {
+    border-radius: 15%;
+    border: 1vmin solid grey;
+    height: 250px;
+    width: 200px;
+}
+
+#board > div:hover {
+    border: 1vmin solid lightcoral;
+    transition: 75ms;
+}
