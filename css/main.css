@@ -4,13 +4,17 @@
 
 body {
     /*   viewport units: vh (viewport height), vw (viewport width), vmin (smallest between width and height) */
-    /* height: 100vh; */
-    margin: 0;
+    height:94vh;
     font-family: 'Sofia Sans Condensed', sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+#incorrect {
+    display: grid;
+    justify-content: flex-end;
 }
 
 #board {
@@ -21,13 +25,30 @@ body {
 }
 
 #board > div {
+    display: flex;
     border-radius: 15%;
     border: 1vmin solid grey;
-    height: 250px;
-    width: 200px;
+    height: 4fr;
+    width: 4fr;
+    background-image: url("/home/mitul/Downloads/download.jpeg");
 }
 
 #board > div:hover {
     border: 1vmin solid lightcoral;
-    transition: 75ms;
+    transition: 100ms;
+}
+
+#button {
+    margin-top: 4vmin;
+    padding: 2vmin;
+    font-size: 2vmin;
+    border-radius: 4vmin;
+    border: 0.1vmin solid grey;
+    color:grey;
+}
+
+#button:hover {
+    color: blue;
+    transition: 100ms;
+    background-color: solid red;
 }

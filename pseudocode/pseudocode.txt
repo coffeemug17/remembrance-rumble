@@ -1,0 +1,30 @@
+1. Firstly, we start off by using emmet to create skeleton HTML documents
+
+2. The HtML is then populated with a section that consists of 12 divs with 4 aligned
+   on each individual row.
+
+3. A play again button is also added in the bottom to restart the game
+   when the player is done playing the game
+
+4. Further, I am going to use CSS to style my divs to have a border of light greyish
+   and a it's going to be 15%
+
+5. I will make use of the CSS cards library to ensure each of my div has a backwards
+   facing card
+
+6. I will then make the play again button and heading tags styled with css
+
+7. I am then going to add an event listener to each div which when when clicked,
+   flips the card to reveal the fron facing 
+
+8. Further, I will be adding an incorrect attempts counter that will increment
+   everytime the player guesses incorrectly
+
+9. I will try to theme my game more pokery themed will upwards facing cards being 
+   normal card faces
+
+10. I will then add a game logic that would help first with initializing and 
+    then with matching the cards together 
+
+11. Once the incorrect attempts are more than a certain amount, the game
+    restarts
