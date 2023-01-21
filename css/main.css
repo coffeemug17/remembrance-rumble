@@ -40,11 +40,12 @@ h3 {
 }
 
 #board > div {
+    
     display: flex;
-    /* border-radius: 10%; */
-    /* border: 1vmin solid grey; */
-    height: 4fr;
-    width: 4fr;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    padding-bottom: calc(100% * 3 / 4);
 }
 
 #board > div:hover {
