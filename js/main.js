@@ -17,15 +17,15 @@ const IMAGE_BACK = "/home/mitul/Desktop/bootcampDir/remembrance-rumble/css/card-
 //to the id of the divs
 
 let board;//this will consists of all the card variables in an array
-let incorrectTries = 10;
+let incorrectTries;
+let gameOver;
 
 /*----- cached element references -----*/
-// const imgEl = document.querySelector('section > div'); 
 const resetButton = document.getElementById("button");
 const headingEl = document.querySelector('h2');
 
 /*----- event listeners -----*/
-// resetButton.addEventListener('click', resetGame);
+resetButton.addEventListener('click', init);
 document.querySelector('section').addEventListener('click', flipCard);
 
 /*----- functions -----*/
@@ -36,6 +36,8 @@ function init() {
     //The board variable is initialized to getShuffledCards 
     //which returns a randomized array of cards
     board = getShuffledCards();
+    incorrectTries = 10;
+    gameOver = false;
 
     // console.log(board);
     render();// This works
@@ -71,14 +73,17 @@ function flipCard(evt) {
     }
 }
 
-// function resetGame(evt) {
-//     evt.target.visibility = 'hidden';
-// }
-
+//Renders the cards on the board
 function render() {
     renderMessage();
+    renderVisibility();
 }
 
+//Controls the amount of tries being displayed on the screen
 function renderMessage() {
     headingEl.innerHTML = `Number of Attempts Remaining: ${incorrectTries}`;
+}
+//Controls the visibility of the play again button
+function renderVisibility() {
+    resetButton.style.visibility = gameOver ? 'visible' :'hidden';
 }
