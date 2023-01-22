@@ -10,12 +10,12 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url("../css/card-library/images/backs/pexels-anna-shvets-6664176.jpg");
+    background-image: url("../css/card-library/images/custom/pexels-anna-shvets-6664126.jpg");
     background-position:center top ;
     background-size:cover;
     background-repeat: no-repeat;
 }
-h1, h3 {
+h1, h2 {
     font-family: 'Lobster', cursive;
 }
 
@@ -23,7 +23,7 @@ h1 {
     color: aquamarine;
 }
 
-h3 {
+h2 {
     color: blanchedalmond;
 }
 
@@ -40,7 +40,7 @@ h3 {
 }
 
 #board > div {
-    
+
     display: flex;
     height: 100%;
     width: 100%;
@@ -52,6 +52,8 @@ h3 {
     border: 1vmin solid lightcoral;
     transition: 100ms;
 }
+
+
 
 #button {
     margin-top: 4vmin;
