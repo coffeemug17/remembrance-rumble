@@ -20,12 +20,13 @@ let board;//this will consists of all the card variables in an array
 let incorrectTries = 10;
 
 /*----- cached element references -----*/
-const tileImgEl = document.querySelectorAll('section > div'); 
+// const imgEl = document.querySelector('section > div'); 
 const resetButton = document.getElementById("button");
 const headingEl = document.querySelector('h2');
 
 /*----- event listeners -----*/
-resetButton.addEventListener('click', resetGame);
+// resetButton.addEventListener('click', resetGame);
+document.querySelector('section').addEventListener('click', flipCard);
 
 /*----- functions -----*/
 init();
@@ -64,9 +65,15 @@ function getShuffledCards() {
 
 }
 
-function resetGame(evt) {
-    evt.target.visibility = 'hidden';
+function flipCard(evt) {
+    if (evt.target.tagName === "DIV" ){
+        console.log(evt.target);
+    }
 }
+
+// function resetGame(evt) {
+//     evt.target.visibility = 'hidden';
+// }
 
 function render() {
     renderMessage();
