@@ -8,7 +8,7 @@ const IMAGE_TILES = [
     { img: "card dK", matched : false}
 ];
 
-const IMAGE_BACK = "/home/mitul/Desktop/bootcampDir/remembrance-rumble/css/card-library/images/backs/blue.svg"
+const IMAGE_BACK = "card back"
 
 /*----- app's state (variables) -----*/
 
@@ -23,6 +23,7 @@ let gameOver;
 /*----- cached element references -----*/
 const resetButton = document.getElementById("button");
 const headingEl = document.querySelector('h2');
+const divEls = document.querySelectorAll("section > div");
 
 /*----- event listeners -----*/
 resetButton.addEventListener('click', init);
@@ -36,12 +37,10 @@ function init() {
     //The board variable is initialized to getShuffledCards 
     //which returns a randomized array of cards
     board = getShuffledCards();
-    console.log(board);
+    // console.log(board);
     incorrectTries = 10;
     gameOver = false;
-    document.querySelectorAll("section > div")
-
-    // console.log(board);
+    
     render();// This works
 }
 
@@ -74,14 +73,15 @@ function flipCard(evt) {
         console.log(evt);
 
         evt.target.classList.value = board[evt.target.id].img;
-        // evt.target.style.backgroundImage = board[evt.target.id].img;
+
     }
 }
 
 //Renders the cards on the board
 function render() {
     renderMessage();
-    renderVisibility();
+    renderButtonVisibility();
+    renderCardVisibility();
 }
 
 //Controls the amount of tries being displayed on the screen
@@ -89,6 +89,13 @@ function renderMessage() {
     headingEl.innerHTML = `Number of Attempts Remaining: ${incorrectTries}`;
 }
 //Controls the visibility of the play again button
-function renderVisibility() {
+function renderButtonVisibility() {
     resetButton.style.visibility = gameOver ? 'visible' :'hidden';
+}
+function renderCardVisibility() {
+    if (gameOver) {
+        divEls.forEach(function(divEl) {
+            divEl.classList.value = IMAGE_BACK;
+        })
+    }
 }
