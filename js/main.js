@@ -1,11 +1,11 @@
 /*----- constants -----*/
 const IMAGE_TILES = [
-    { img: "/home/mitul/Desktop/bootcampDir/remembrance-rumble/css/card-library/images/hearts/hearts-A.svg", matched : false},
-    { img: "/home/mitul/Desktop/bootcampDir/remembrance-rumble/css/card-library/images/spades/spades-r05.svg", matched : false},
-    { img: "/home/mitul/Desktop/bootcampDir/remembrance-rumble/css/card-library/images/diamonds/diamonds-r08.svg", matched : false},
-    { img: "/home/mitul/Desktop/bootcampDir/remembrance-rumble/css/card-library/images/clubs/clubs-J.svg", matched : false},
-    { img: "/home/mitul/Desktop/bootcampDir/remembrance-rumble/css/card-library/images/jokers/joker.svg", matched : false},
-    { img: "/home/mitul/Desktop/bootcampDir/remembrance-rumble/css/card-library/images/diamonds/diamonds-K.svg", matched : false}
+    { img: "card hA", matched : false},
+    { img: "card s05", matched : false},
+    { img: "card d08", matched : false},
+    { img: "card cJ", matched : false},
+    { img: "card joker", matched : false},
+    { img: "card dK", matched : false}
 ];
 
 const IMAGE_BACK = "/home/mitul/Desktop/bootcampDir/remembrance-rumble/css/card-library/images/backs/blue.svg"
@@ -36,8 +36,10 @@ function init() {
     //The board variable is initialized to getShuffledCards 
     //which returns a randomized array of cards
     board = getShuffledCards();
+    console.log(board);
     incorrectTries = 10;
     gameOver = false;
+    document.querySelectorAll("section > div")
 
     // console.log(board);
     render();// This works
@@ -69,7 +71,10 @@ function getShuffledCards() {
 
 function flipCard(evt) {
     if (evt.target.tagName === "DIV" ){
-        console.log(evt.target);
+        console.log(evt);
+
+        evt.target.classList.value = board[evt.target.id].img;
+        // evt.target.style.backgroundImage = board[evt.target.id].img;
     }
 }
 
