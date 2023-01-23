@@ -18,7 +18,12 @@ const IMAGE_BACK = "back";
 
 let board;//this will consists of all the card variables in an array
 let incorrectTries;
-let gameOver;
+let gameStatus; // This dictates the state of the game and whethere the cards need to be flipped back
+let ignoreClick;// This is meant for checking if the second card matches or not
+
+/*----- globally created variables -----*/
+let firstCard;
+let cardCounter = 1;
 
 /*----- cached element references -----*/
 const resetButton = document.getElementById("button");
@@ -37,9 +42,11 @@ function init() {
     //The board variable is initialized to getShuffledCards 
     //which returns a randomized array of cards
     board = getShuffledCards();
-    // console.log(board);
+    console.log(board);
     incorrectTries = 10;
-    gameOver = getGameWinner();
+    gameStatus = true;
+    firstCard = null;
+    cardCounter = 1;
     
     render();// This works
 }
@@ -68,17 +75,29 @@ function getShuffledCards() {
 
 }
 
-function getGameWinner() {
-    for (let tile in board) {
-        // console.log(board[tile].img);
-    }
-}
-
 function flipCard(evt) {
     if (evt.target.tagName === "DIV" ){
         evt.target.classList.add(board[evt.target.id].img);
         evt.target.classList.remove(IMAGE_BACK);
+        if (cardCounter === 1) {
+            firstCard = board[evt.target.id].img;
+            // console.log(firstCard);
+            cardCounter++;
+        } else if (cardCounter === 2) {
+            checkMatched(evt);
+            cardCounter = 1;
+        }
+
     }
+}
+
+//This function checks if the first 
+function checkMatched(evt) {
+    if (firstCard === board[evt.target.id].img) {
+        board[evt.target.id].matched = true;
+        console.log("matched");
+    } else {
+        console.log("not a match");    }
 }
 
 //Renders the cards on the board
@@ -94,7 +113,7 @@ function renderMessage() {
 }
 //Controls the visibility of the play again button
 function renderButtonVisibility() {
-    resetButton.style.visibility = gameOver ? 'visible' :'hidden';
+    resetButton.style.visibility = gameStatus ? 'visible' :'hidden';
 }
 function renderCards() {
     divEls.forEach(function(divEl) {

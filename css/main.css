@@ -65,7 +65,7 @@ h2 {
 }
 
 #button:hover {
-    color: greenyellow;
+    color: white;
     transition: 100ms;
-    background-color: goldenrod;
+    background-color: darkslategrey;
 }
