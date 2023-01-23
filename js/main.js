@@ -1,14 +1,14 @@
 /*----- constants -----*/
 const IMAGE_TILES = [
-    { img: "card hA", matched : false},
-    { img: "card s05", matched : false},
-    { img: "card d08", matched : false},
-    { img: "card cJ", matched : false},
-    { img: "card joker", matched : false},
-    { img: "card dK", matched : false}
+    { img: "hA", matched : false},
+    { img: "s05", matched : false},
+    { img: "d08", matched : false},
+    { img: "cJ", matched : false},
+    { img: "joker", matched : false},
+    { img: "dK", matched : false}
 ];
 
-const IMAGE_BACK = "card back"
+const IMAGE_BACK = "back";
 
 /*----- app's state (variables) -----*/
 
@@ -39,7 +39,7 @@ function init() {
     board = getShuffledCards();
     // console.log(board);
     incorrectTries = 10;
-    gameOver = false;
+    gameOver = getGameWinner();
     
     render();// This works
 }
@@ -68,12 +68,16 @@ function getShuffledCards() {
 
 }
 
+function getGameWinner() {
+    for (let tile in board) {
+        // console.log(board[tile].img);
+    }
+}
+
 function flipCard(evt) {
     if (evt.target.tagName === "DIV" ){
-        console.log(evt);
-
-        evt.target.classList.value = board[evt.target.id].img;
-
+        evt.target.classList.add(board[evt.target.id].img);
+        evt.target.classList.remove(IMAGE_BACK);
     }
 }
 
@@ -81,7 +85,7 @@ function flipCard(evt) {
 function render() {
     renderMessage();
     renderButtonVisibility();
-    renderCardVisibility();
+    renderCards();
 }
 
 //Controls the amount of tries being displayed on the screen
@@ -92,10 +96,17 @@ function renderMessage() {
 function renderButtonVisibility() {
     resetButton.style.visibility = gameOver ? 'visible' :'hidden';
 }
-function renderCardVisibility() {
-    if (gameOver) {
-        divEls.forEach(function(divEl) {
-            divEl.classList.value = IMAGE_BACK;
-        })
-    }
+function renderCards() {
+    divEls.forEach(function(divEl) {
+        const cardObj = board[divEl.id];
+        // console.log(cardObj);
+        if (cardObj.matched) {
+            divEl.classList.add(cardObj.img);
+            divEl.classList.remove(IMAGE_BACK);
+        } else {
+            divEl.classList.add(IMAGE_BACK);
+            divEl.classList.remove(cardObj.img);
+        }
+        // divEl.classList.value = IMAGE_BACK;
+    })
 }
