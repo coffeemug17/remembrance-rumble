@@ -43,6 +43,10 @@ function init() {
     //The board variable is initialized to getShuffledCards 
     //which returns a randomized array of cards
     board = getShuffledCards();
+    setTimeout(function() {
+        showinitialCards();
+    },1000)
+    reinitBoard();
     // console.log(board);
     incorrectTries = 10;
     gameStatus = false;
@@ -55,6 +59,18 @@ function init() {
 function getGameStatus() {
     return board.every((card) => card.matched); 
     render();
+}
+
+function reinitBoard() {
+    divEls.forEach(function(divEl) {
+        divEl.classList.value = "card back";
+    })
+}
+
+function showinitialCards() {
+    divEls.forEach(function(divEl, divIdx) {
+        divEl.classList.value = "card " + board[divIdx].img;
+    })
 }
 
 function getShuffledCards() {
