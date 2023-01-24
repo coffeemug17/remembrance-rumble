@@ -23,6 +23,7 @@ let ignoreClick;// This is meant for checking if the second card matches or not
 
 /*----- globally created variables -----*/
 let firstCard;
+let firstCardIdx;
 let cardCounter = 1;
 
 /*----- cached element references -----*/
@@ -42,13 +43,18 @@ function init() {
     //The board variable is initialized to getShuffledCards 
     //which returns a randomized array of cards
     board = getShuffledCards();
-    console.log(board);
+    // console.log(board);
     incorrectTries = 10;
-    gameStatus = true;
+    gameStatus = false;
     firstCard = null;
+    firstCardIdx = null;
     cardCounter = 1;
-    
-    render();// This works
+    render();
+}
+
+function getGameStatus() {
+    return board.every((card) => card.matched); 
+    render();
 }
 
 function getShuffledCards() {
@@ -72,20 +78,29 @@ function getShuffledCards() {
         cards.push(rndCard);
     }
     return cards;
-
 }
 
 function flipCard(evt) {
     if (evt.target.tagName === "DIV" ){
+        
+        //Guard
+        if (board[evt.target.id].matched) return;
+
         evt.target.classList.add(board[evt.target.id].img);
         evt.target.classList.remove(IMAGE_BACK);
         if (cardCounter === 1) {
-            firstCard = board[evt.target.id].img;
+            firstCard = board[evt.target.id];
+            firstCardIdx = evt.target.id;
             // console.log(firstCard);
+            divEls[firstCardIdx].classList.add(firstCard.img);
+            divEls[firstCardIdx].classList.remove(IMAGE_BACK);
             cardCounter++;
         } else if (cardCounter === 2) {
             checkMatched(evt);
             cardCounter = 1;
+            setTimeout(function() {
+                render();
+            },1000);
         }
 
     }
@@ -93,11 +108,16 @@ function flipCard(evt) {
 
 //This function checks if the first 
 function checkMatched(evt) {
-    if (firstCard === board[evt.target.id].img) {
+    if (firstCard.img === board[evt.target.id].img && firstCardIdx !== evt.target.id) {
         board[evt.target.id].matched = true;
+        firstCard.matched = true;
         console.log("matched");
     } else {
-        console.log("not a match");    }
+        console.log("Not a match");
+        incorrectTries--;
+    }
+    gameStatus = getGameStatus();
+    // console.log(gameStatus);
 }
 
 //Renders the cards on the board
@@ -110,15 +130,21 @@ function render() {
 //Controls the amount of tries being displayed on the screen
 function renderMessage() {
     headingEl.innerHTML = `Number of Attempts Remaining: ${incorrectTries}`;
+    if (incorrectTries <= 0) {
+        headingEl.innerText = 'Game Over, You Have Exhausted Your Attempts! Your Game Is Being Restarted!';
+        setTimeout(function() {
+            init();
+        },3000);
+    }
 }
 //Controls the visibility of the play again button
 function renderButtonVisibility() {
     resetButton.style.visibility = gameStatus ? 'visible' :'hidden';
 }
+
 function renderCards() {
     divEls.forEach(function(divEl) {
         const cardObj = board[divEl.id];
-        // console.log(cardObj);
         if (cardObj.matched) {
             divEl.classList.add(cardObj.img);
             divEl.classList.remove(IMAGE_BACK);
@@ -126,6 +152,5 @@ function renderCards() {
             divEl.classList.add(IMAGE_BACK);
             divEl.classList.remove(cardObj.img);
         }
-        // divEl.classList.value = IMAGE_BACK;
     })
 }
