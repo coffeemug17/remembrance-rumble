@@ -43,18 +43,20 @@ function init() {
     //The board variable is initialized to getShuffledCards 
     //which returns a randomized array of cards
     board = getShuffledCards();
+    reinitBoard();
     showinitialCards();
-    setTimeout(function() {
-        reinitBoard();
-        console.log("yes");
-    },5000)
     // console.log(board);
     incorrectTries = 10;
     gameStatus = false;
     firstCard = null;
     firstCardIdx = null;
     cardCounter = 1;
-    render();
+    headingEl.innerText = "Setting up the Board! Remember as many cards as you can!";
+    // render();
+    setTimeout(function() {
+        render();
+        // console.log("yes");
+    },4000)
 }
 
 function getGameStatus() {
@@ -123,7 +125,7 @@ function flipCard(evt) {
     }
 }
 
-//This function checks if the first 
+//This function checks if the first card's img property is equal to one selected
 function checkMatched(evt) {
     if (firstCard.img === board[evt.target.id].img && firstCardIdx !== evt.target.id) {
         board[evt.target.id].matched = true;
