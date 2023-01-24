@@ -43,10 +43,11 @@ function init() {
     //The board variable is initialized to getShuffledCards 
     //which returns a randomized array of cards
     board = getShuffledCards();
+    showinitialCards();
     setTimeout(function() {
-        showinitialCards();
-    },1000)
-    reinitBoard();
+        reinitBoard();
+        console.log("yes");
+    },5000)
     // console.log(board);
     incorrectTries = 10;
     gameStatus = false;
@@ -151,6 +152,9 @@ function renderMessage() {
         setTimeout(function() {
             init();
         },3000);
+    }
+    if (gameStatus) {
+        headingEl.innerText = "Congratulations, You have won! Press the Play Again button to play again!"
     }
 }
 //Controls the visibility of the play again button
