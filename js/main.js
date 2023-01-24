@@ -52,7 +52,7 @@ function init() {
     firstCardIdx = null;
     cardCounter = 1;
     headingEl.innerText = "Setting up the Board! Remember as many cards as you can!";
-    // render();
+    resetButton.style.visibility = 'hidden';
     setTimeout(function() {
         render();
         // console.log("yes");
