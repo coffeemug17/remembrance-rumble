@@ -10,6 +10,13 @@ const IMAGE_TILES = [
 
 const IMAGE_BACK = "back";
 
+const SOUNDS = {
+    match: 'http://starmen.net/mother2/soundfx/itemget2.wav',
+    no_match: 'http://cd.textfiles.com/cdaction/cdaction47b/BEAT2000/SOUNDS/SFX/RATTLES.WAV',
+    background: 'https://uppbeat.io/track/hartzmann/clear-sky',
+    siren: 'https://www.freesound.org/data/previews/336/336899_4939433-lq.mp3'
+  };
+
 /*----- app's state (variables) -----*/
 
 //It is also known that the board will have 
@@ -30,6 +37,7 @@ let cardCounter = 1;
 const resetButton = document.getElementById("button");
 const headingEl = document.querySelector('h2');
 const divEls = document.querySelectorAll("section > div");
+const gameAudio = new Audio();
 
 /*----- event listeners -----*/
 resetButton.addEventListener('click', init);
@@ -51,6 +59,7 @@ function init() {
     firstCard = null;
     firstCardIdx = null;
     cardCounter = 1;
+    ignoreClick = false;
     headingEl.innerText = "Setting up the Board! Remember as many cards as you can!";
     resetButton.style.visibility = 'hidden';
     setTimeout(function() {
@@ -100,6 +109,7 @@ function getShuffledCards() {
 }
 
 function flipCard(evt) {
+    if (ignoreClick) return;
     if (evt.target.tagName === "DIV" ){
         
         //Guard
@@ -130,13 +140,26 @@ function checkMatched(evt) {
     if (firstCard.img === board[evt.target.id].img && firstCardIdx !== evt.target.id) {
         board[evt.target.id].matched = true;
         firstCard.matched = true;
-        console.log("matched");
+        // console.log("matched");
+        playSound('match');
     } else {
-        console.log("Not a match");
         incorrectTries--;
+        playSound('no_match');
+        ignoreClick = true;
+
+        setTimeout(function() {
+            ignoreClick = false;
+        },1500);
+        // console.log("Not a match");
     }
     gameStatus = getGameStatus();
     // console.log(gameStatus);
+}
+
+function playSound(gameSound) {
+    // console.log(SOUNDS[gameSound]);
+    gameAudio.src = SOUNDS[gameSound];
+    gameAudio.play();
 }
 
 //Renders the cards on the board
