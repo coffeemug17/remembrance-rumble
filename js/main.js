@@ -13,16 +13,12 @@ const IMAGE_BACK = "back";
 const SOUNDS = {
     match: 'http://starmen.net/mother2/soundfx/itemget2.wav',
     no_match: 'http://cd.textfiles.com/cdaction/cdaction47b/BEAT2000/SOUNDS/SFX/RATTLES.WAV',
-    background: 'https://uppbeat.io/track/hartzmann/clear-sky',
-    siren: 'https://www.freesound.org/data/previews/336/336899_4939433-lq.mp3'
   };
 
 /*----- app's state (variables) -----*/
-
 //It is also known that the board will have 
 //IMAGE_TILES * 2 elements that are mappable
 //to the id of the divs
-
 let board;//this will consists of all the card variables in an array
 let incorrectTries;
 let gameStatus; // This dictates the state of the game and whethere the cards need to be flipped back
@@ -47,13 +43,11 @@ document.querySelector('section').addEventListener('click', flipCard);
 init();
 
 function init() {
-
     //The board variable is initialized to getShuffledCards 
     //which returns a randomized array of cards
     board = getShuffledCards();
     reinitBoard();
     showinitialCards();
-    // console.log(board);
     incorrectTries = 10;
     gameStatus = false;
     firstCard = null;
@@ -64,7 +58,6 @@ function init() {
     resetButton.style.visibility = 'hidden';
     setTimeout(function() {
         render();
-        // console.log("yes");
     },4000)
 }
 
@@ -109,18 +102,16 @@ function getShuffledCards() {
 }
 
 function flipCard(evt) {
+    //Guard
     if (ignoreClick) return;
     if (evt.target.tagName === "DIV" ){
-        
         //Guard
         if (board[evt.target.id].matched) return;
-
         evt.target.classList.add(board[evt.target.id].img);
         evt.target.classList.remove(IMAGE_BACK);
         if (cardCounter === 1) {
             firstCard = board[evt.target.id];
             firstCardIdx = evt.target.id;
-            // console.log(firstCard);
             divEls[firstCardIdx].classList.add(firstCard.img);
             divEls[firstCardIdx].classList.remove(IMAGE_BACK);
             cardCounter++;
@@ -131,7 +122,6 @@ function flipCard(evt) {
                 render();
             },1000);
         }
-
     }
 }
 
@@ -140,7 +130,6 @@ function checkMatched(evt) {
     if (firstCard.img === board[evt.target.id].img && firstCardIdx !== evt.target.id) {
         board[evt.target.id].matched = true;
         firstCard.matched = true;
-        // console.log("matched");
         playSound('match');
     } else {
         incorrectTries--;
@@ -149,15 +138,12 @@ function checkMatched(evt) {
 
         setTimeout(function() {
             ignoreClick = false;
-        },1500);
-        // console.log("Not a match");
+        },1100);
     }
     gameStatus = getGameStatus();
-    // console.log(gameStatus);
 }
 
 function playSound(gameSound) {
-    // console.log(SOUNDS[gameSound]);
     gameAudio.src = SOUNDS[gameSound];
     gameAudio.play();
 }
@@ -182,6 +168,7 @@ function renderMessage() {
         headingEl.innerText = "Congratulations, You have won! Press the Play Again button to play again!"
     }
 }
+
 //Controls the visibility of the play again button
 function renderButtonVisibility() {
     resetButton.style.visibility = gameStatus ? 'visible' :'hidden';
