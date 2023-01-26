@@ -12,7 +12,7 @@ const IMAGE_BACK = "back";
 
 const SOUNDS = {
     match: 'http://starmen.net/mother2/soundfx/itemget2.wav',
-    no_match: 'http://starmen.net/mother2/soundfx/freeze1.wav',
+    nomatch: 'http://starmen.net/mother2/soundfx/freeze1.wav',
   };
 
 /*----- app's state (variables) -----*/
@@ -136,7 +136,7 @@ function checkMatched(evt) {
         divEls[firstCardIdx].classList.remove(firstCard.img);
     } else {
         incorrectTries--;
-        playSound('no_match');
+        playSound('nomatch');
         ignoreClick = true;
 
         setTimeout(function() {
