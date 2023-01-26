@@ -11,10 +11,14 @@ The game is designed to be challenging yet fun, with beautiful card images rende
 - Challenging yet fun gameplay
 
 ## Screenshot(s)
-- ![Board Initalization](https://i.imgur.com/J2Oxt4b.png)
-- ![In-play](https://i.imgur.com/x1NjON5.png)
-- ![Losing the game after exhausted Number of Attempts](https://i.imgur.com/IfFOPA7.png)
-- ![Winning the game](https://i.imgur.com/o90n0sF.png)
+- Board Initialization 
+![Board Initalization](https://i.imgur.com/J2Oxt4b.png)
+- Game in-play
+![In-play](https://i.imgur.com/x1NjON5.png)
+- Game Lost
+![Losing the game after exhausted Number of Attempts](https://i.imgur.com/IfFOPA7.png)
+- Game Won
+![Winning the game](https://i.imgur.com/o90n0sF.png)
 
 ## Technologies Used
 - Vanilla JavaScript
