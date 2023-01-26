@@ -28,11 +28,10 @@ The game is designed to be challenging yet fun, with beautiful card images rende
 - CSS Card Library
 
 ## Getting Started
-- [Link to deployed game]("https://coffeemug17.github.io/remembrance-rumble/")
+- [Link to deployed game](https://coffeemug17.github.io/remembrance-rumble/)
 
 ## Next Steps
-- Planned future enhancements (icebox items)
-    - 
+- Adding possible CSS transformations when flipping the cards over.
 
 
 ## Contributing

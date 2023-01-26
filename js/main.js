@@ -12,7 +12,7 @@ const IMAGE_BACK = "back";
 
 const SOUNDS = {
     match: 'http://starmen.net/mother2/soundfx/itemget2.wav',
-    no_match: 'http://cd.textfiles.com/cdaction/cdaction47b/BEAT2000/SOUNDS/SFX/RATTLES.WAV',
+    no_match: 'http://starmen.net/mother2/soundfx/freeze1.wav',
   };
 
 /*----- app's state (variables) -----*/
@@ -131,6 +131,9 @@ function checkMatched(evt) {
         board[evt.target.id].matched = true;
         firstCard.matched = true;
         playSound('match');
+    } else if (firstCardIdx === evt.target.id) {
+        divEls[firstCardIdx].classList.add(IMAGE_BACK);
+        divEls[firstCardIdx].classList.remove(firstCard.img);
     } else {
         incorrectTries--;
         playSound('no_match');
