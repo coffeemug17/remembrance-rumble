@@ -3,7 +3,6 @@
 }
 
 body {
-    /*   viewport units: vh (viewport height), vw (viewport width), vmin (smallest between width and height) */
     height: 100vh;
     font-family: 'Sofia Sans Condensed', sans-serif;
     display: flex;
@@ -15,15 +14,14 @@ body {
     background-size:cover;
     background-repeat: no-repeat;
 }
-h1, h2 {
-    font-family: 'Lobster', cursive;
-}
 
 h1 {
+    font-family: 'Lobster', cursive;
     color: aquamarine;
 }
 
 h2 {
+    font-family: 'Lobster', cursive;
     color: blanchedalmond;
 }
 
@@ -40,7 +38,6 @@ h2 {
 }
 
 #board > div {
-
     display: flex;
     height: 100%;
     width: 100%;
@@ -53,8 +50,6 @@ h2 {
     border-radius: 15px;
     transition: 100ms;
 }
-
-
 
 #button {
     margin-top: 4vmin;
