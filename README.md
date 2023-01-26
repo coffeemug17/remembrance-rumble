@@ -1,5 +1,5 @@
 # Remembrance Rumble
-Remembrance Rumble is a thrilling card-memorization ggame that challenges players to test their memory and focus. In this game, players will have 10 attempts to match all the cards on the board. If they are successful, they will be rewarded with the appearance of the "Play Again" button, allowing them to start the game anew and continue honing their memory skills.
+Remembrance Rumble is a thrilling card-memorization game that challenges players to test their memory and focus. In this game, players will have 10 attempts to match all the cards on the board. If they are successful, they will be rewarded with the appearance of the "Play Again" button, allowing them to start the game anew and continue honing their memory skills.
 The game is designed to be challenging yet fun, with beautiful card images rendered using the CSS cards-library and audio effects that add an extra layer of immersion. Whether you're a seasoned pro or just starting out, Remembrance Rumble is the perfect game to test your memory and focus.
 
 ## Features
