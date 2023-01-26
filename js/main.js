@@ -27,7 +27,7 @@ let ignoreClick;// This is meant for checking if the second card matches or not
 /*----- globally created variables -----*/
 let firstCard;
 let firstCardIdx;
-let cardCounter = 1;
+let cardCounter;
 
 /*----- cached element references -----*/
 const resetButton = document.getElementById("button");
@@ -90,7 +90,6 @@ function getShuffledCards() {
     });
     //Next, we want the card to be chosen randomly
     //And we make use of the Math library to generate a random index
-
     while(tempTiles.length) {
         let rndIdx = Math.floor(Math.random() * tempTiles.length);
         // Remove tile - note that splice always returns an array
@@ -138,7 +137,6 @@ function checkMatched(evt) {
         incorrectTries--;
         playSound('nomatch');
         ignoreClick = true;
-
         setTimeout(function() {
             ignoreClick = false;
         },1100);

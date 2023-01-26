@@ -31,7 +31,7 @@ The game is designed to be challenging yet fun, with beautiful card images rende
 - [Link to deployed game](https://coffeemug17.github.io/remembrance-rumble/)
 
 ## Next Steps
-- Adding possible CSS transformations when flipping the cards over.
+- Adding possible CSS transformations when flipping the cards over.(Icebox)
 
 
 ## Contributing
