@@ -32,6 +32,7 @@ The game is designed to be challenging yet fun, with beautiful card images rende
 
 ## Next Steps
 - Adding possible CSS transformations when flipping the cards over.(Icebox)
+- Giving the player the option to reduce the number of attempts.(Icebox)
 
 
 ## Contributing
